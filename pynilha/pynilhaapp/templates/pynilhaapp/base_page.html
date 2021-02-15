@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'pynilhaapp/style_base_page.css' %}" />
+    <title>{% block title %} Pynilha 2021 {% endblock title %}</title>
+  </head>
+  <body>
+    <header>
+      <h1><a href=/pynilhaapp>PYNILHA</a></h1>
+      <h3>Domine suas Finanças</h3>
+    </header>
+    <div id="header_menu">
+      <div class="item_menu">
+        <span>Mensal</span>
+        <div class="menuconfigurar">
+          <a class="header_menu_link" href=/pynilhaapp/mes/janeiro>Janeiro</a>
+          <a class="header_menu_link" href=/pynilhaapp/mes/fevereiro>Fevereiro</a>
+          <a class="header_menu_link" href=/pynilhaapp/mes/marco>Março</a>
+          <a class="header_menu_link" href=/pynilhaapp/mes/abril>Abril</a>
+          <a class="header_menu_link" href=/pynilhaapp/mes/maio>Maio</a>
+          <a class="header_menu_link" href=/pynilhaapp/mes/junho>Junho</a>
+          <a class="header_menu_link" href=/pynilhaapp/mes/julho>Julho</a>
+          <a class="header_menu_link" href=/pynilhaapp/mes/agosto>Agosto</a>
+          <a class="header_menu_link" href=/pynilhaapp/mes/setembro>Setembro</a>
+          <a class="header_menu_link" href=/pynilhaapp/mes/outubro>Outubro</a>
+          <a class="header_menu_link" href=/pynilhaapp/mes/novembro>Novembro</a>
+          <a class="header_menu_link" href=/pynilhaapp/mes/dezembro>Dezembro</a>
+        </div>
+      </div>
+      <div class="item_menu">
+        <span>Anual</span>
+        <div class="menuconfigurar">
+          <a class="header_menu_link">Despesas Anuais</a>
+          <a class="header_menu_link">Amortização AP</a>
+        </div>
+      </div>
+      <div class="item_menu">
+        <span>Configurar</span>
+        <div class="menuconfigurar">
+          <a class="header_menu_link">Planilha Dados</a>
+          <a class="header_menu_link">Valores Padrão</a>
+        </div>
+      </div>
+    </div>
+
+    <section id="conteudo_base">
+      {% block conteudo_base %}
+
+      <h2 id="titulo_conteudo_base">Controle Financeiro de 2021 - Mês</h2>
+      
+      {% endblock conteudo_base %}
+    </section>
+
+    <footer>
+      <span>&#8605; Desevolvido por Rafael Bruno - 2021 &#8604;</span>
+      <br>
+      <span>Utilizando Django - Python</span>
+      <br>
+      <span><em>Site Demonstrativo</em></span>
+    </footer>
+
+  </body>
+</html>

@@ -1,0 +1,127 @@
+{% extends "pynilhaapp/base_page.html" %}
+      
+{% block title %}Pynilha - Controle Mensal{% endblock title %}
+
+{% block conteudo_base %}
+<h2 id="titulo_conteudo_base">
+  Controle Financeiro de 2021
+  <br>
+  Mês {{ mes_visualizado }}
+</h2>
+
+
+<div id="container_geral_flex">
+  <div id="mesAtualUso" class="hideElement"></div>
+  <!-- RECEITAS -->
+  <div class="linha_flex_destaque">
+    <h4>RECEITA</h4>
+    <h4>EFETIVADO</h4>
+    <h4>VALOR</h4>
+  </div>
+  <form action="{% if readonly %}editar{% else %}confirmar_dados_receitas{% endif %}" id="receitaItens" method="post">
+    {% csrf_token %}
+    {% for k,l in lista_receitas %}
+      {% if not forloop.last %}
+      <div class="linha_flex item_receita">
+        <label for="{{ 'Receita' }}{{ forloop.counter }}"> {{ k }} </label>
+        <input type="checkbox" name="itemEfetivado{{ forloop.counter }}" id="{{ 'ReceitaEfetivada' }}{{ forloop.counter }}">
+        <input type="number" id="{{ 'Receita' }}{{ forloop.counter }}" name="{{ 'Receita' }}{{ forloop.counter }}" value="{{ l }}" min="0" step="0.01" {% if readonly %}readonly{% endif %} {% if readonly %}class="valor"{% else %}class="valor cor_item_modo_edicao"{% endif %}>
+      </div>
+      {% else %}
+      <div class="linha_flex item_receita">
+        <label for="{{ 'ReceitaTotal' }}"> {{ k }} </label>
+        <input type="number" id="{{ 'ReceitaTotal' }}" name="{{ 'ReceitaTotal' }}" value="{{ l }}" min="0" step="0.01" readonly class="valor">
+      </div>
+      {% endif %}
+    {% endfor %}
+    <div class="linha_flex">
+      <input type="submit" class="buttonUnlockChanges" form="receitaItens" value='{% if readonly %}Alterar Valores{% else %}Confirmar Alterações{% endif %}'>
+    </div>
+  </form>
+
+  <!-- DESPESAS -->
+  <div class="linha_flex_destaque">
+    <h4>DESPESAS</h4>
+    <h4>EFETIVADO</h4>
+    <h4>VALOR</h4>
+  </div>
+  <form action="{% if readonly %}editar{% else %}confirmar_dados_despesas{% endif %}" id="despesaItens" method="post">
+    {% csrf_token %}
+    {% for k,l in lista_despesas %}
+      {% if not forloop.last %}
+      <div class="linha_flex item_despesa">
+        <label for="{{ 'Despesa' }}{{ forloop.counter }}"> {{ k }} </label>
+        <input type="checkbox" name="itemEfetivado{{ forloop.counter }}" id="{{ 'DespesaEfetivada' }}{{ forloop.counter }}">
+        <input type="number" id="{{ 'Despesa' }}{{ forloop.counter }}" name="{{ 'Despesa' }}{{ forloop.counter }}" value="{{ l }}" min="0" step="0.01" {% if readonly %}readonly{% endif %} {% if readonly %}class="valor"{% else %}class="valor cor_item_modo_edicao"{% endif %}>
+      </div>
+      {% else %}
+      <div class="linha_flex item_despesa">
+        <label for="{{ 'DespesaTotal' }}"> {{ k }} </label>
+        <input type="number" id="{{ 'DespesaTotal' }}" name="{{ 'DespesaTotal' }}" value="{{ l }}" min="0" step="0.01" readonly class="valor">
+      </div>
+      {% endif %}
+    {% endfor %}
+    <div class="linha_flex">
+      <input type="submit" class="buttonUnlockChanges" form="despesaItens" value='{% if readonly %}Alterar Valores{% else %}Confirmar Alterações{% endif %}'>
+    </div>
+  </form>
+
+    <!-- SALDO PARCIAL -->
+    <div class="linha_flex_destaque">
+      <label for="SaldoParcial">SALDO PARCIAL</label>
+      <input type="number" id="SaldoParcial" name="SaldoParcial" value="{{ saldo_parcial }}" min="0" step="0.01" readonly class="valor">
+    </div>
+
+    <!-- INVESTIMENTOS -->
+    <div class="linha_flex_destaque">
+      <h4>INVESTIMENTOS</h4>
+      <h4>EFETIVADO</h4>
+      <h4>VALOR</h4>
+    </div>
+    <form action="{% if readonly %}editar{% else %}confirmar_dados_aplicacoes{% endif %}" id="aplicacaoItens" method="post">
+      {% csrf_token %}
+      {% for k,l in lista_aplicações %}
+        {% if not forloop.last %}
+        <div class="linha_flex item_aplicacao">
+          <label for="{{ 'Aplicacao' }}{{ forloop.counter }}"> {{ k }} </label>
+          <input type="checkbox" name="itemEfetivado{{ forloop.counter }}" id="{{ 'AplicacaoEfetivada' }}{{ forloop.counter }}">
+          <input type="number" id="{{ 'Aplicacao' }}{{ forloop.counter }}" name="{{ 'Aplicacao' }}{{ forloop.counter }}" value="{{ l }}" min="0" step="0.01" {% if readonly %}readonly{% endif %} {% if readonly %}class="valor"{% else %}class="valor cor_item_modo_edicao"{% endif %}>
+        </div>
+        {% else %}
+        <div class="linha_flex item_despesa">
+          <label for="{{ 'AplicacaoTotal' }}"> {{ k }} </label>
+          <input type="number" id="{{ 'AplicacaoTotal' }}" name="{{ 'AplicacaoTotal' }}" value="{{ l }}" min="0" step="0.01" readonly class="valor">
+        </div>
+        {% endif %}
+      {% endfor %}
+      <div class="linha_flex">
+        <input type="submit" class="buttonUnlockChanges" form="aplicacaoItens" value='{% if readonly %}Alterar Valores{% else %}Confirmar Alterações{% endif %}'>
+      </div>
+    </form>
+
+      <!-- SALDO FINAL -->
+    <div class="linha_flex_destaque">
+      <label for="SaldoFinal">SALDO FINAL</label>
+      <input type="number" id="SaldoFinal" name="SaldoFinal" value="{{ saldo_final }}" min="0" step="0.01" readonly class="valor">
+    </div>
+   
+  </form>
+
+  <!--
+  {% for k,l in lista_receitas %}
+  <div class="linha_flex item_receita">
+    <label for="{{ 'Receita' }}{{ forloop.counter }}"> {{ k }} </label>
+    <input type="number" id="{{ 'Receita' }}{{ forloop.counter }}" value="{{ l }}" min="0" step="0.01" readonly>
+  </div>
+  {% endfor %}
+          
+  <div class="linha_flex">
+    <label class="label_total_receitas" for="total_receitas0">Total Receitas</label>
+    <input type="number" id="total_receitas0" min="0" step="0.01" readonly value="1200.00">
+  </div>
+  -->
+
+  
+
+</div>
+{% endblock conteudo_base %}

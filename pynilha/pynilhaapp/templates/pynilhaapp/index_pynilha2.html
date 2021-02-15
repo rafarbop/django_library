@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'pynilhaapp/style_index_pynilha.css' %}">
+    <title>Pynilha Financeira</title>
+  </head>
+  <body>
+    <header>
+        <h1>PYNILHA</h1>
+        <h3>Domine suas Finanças</h3>
+    </header>
+    <section id="conteudo_base">
+      <h2 id="titulo_conteudo_base">Controle Financeiro de {{ ano_controle }} - Mês {{ mes_controle }}</h2>
+      <div id="container_geral_flex">
+          <h3>{{ lista_receitas.0.0 }}</h3>
+        <div id="linha_flex_cab">
+          <h4>RECEITA</h4>
+          <h4>VALOR</h4>
+        </div>
+        {% for k,l in lista_receitas %}
+          <div class="linha_flex">
+            <label for="{{ 'Receita' }}{{ forloop.counter }}">{{ k }}</label>
+            <input type="text" id="{{ 'Receita' }}{{ forloop.counter }}" value="{{ l }}" min="0" step="0.01" readonly>
+          </div>
+        {% endfor %}
+        
+        
+        {% for a in lista_receitas %}
+        {% endfor %}
+         
+
+  
+      </div>
+      
+
+    </section>    
+    
+  </body>
+</html>

@@ -1,0 +1,110 @@
+body {
+    width: 95vw;
+    margin: 2vh auto;
+    background-color: #bbccdd;
+    color: #003050;
+    font-family: Arial, Helvetica, sans-serif;
+    min-width: 320px;
+}
+
+header{
+    border: 0.2em solid #f8f8f8;
+    text-align: center;
+    padding: 4vh 4vw;
+    border-radius: 80% 80% 8em 8em;
+    background-color: #88ccaa;
+    margin: 0 auto;
+    min-width: 300px;
+}
+
+header > h1,h3{
+    margin:0;
+    padding: 0;
+}
+
+h2#titulo_conteudo_base{
+    text-align: center;
+    min-width: 300px;
+}
+
+div#container_geral_flex{
+    padding: 0 2vw;
+    width: 96 vw;
+    display: flex;
+    flex-flow: column nowrap;
+    align-self: center;
+    align-items: center;
+    align-content: center;
+    font-size: 1.1em;
+}
+
+div.linha_flex{
+    min-width: 320px;
+}
+
+div#linha_flex_cab{
+    display: inline-flex;
+    margin: 0 auto;
+    min-width: 300px;
+}
+
+div#linha_flex_cab>h4{
+    margin: 2vh 0 0 0;
+    padding: 0.2vw 0.3vw;
+    width: 20vw;
+    min-width: 160px;
+    text-align: center;
+    font-weight: 600;    
+}
+
+label{
+    display: inline-block;
+    width: 20vw;
+    min-width: 160px;
+    padding: 0.3vw;
+}
+label.label_total_receitas{
+    border: 1px solid white;
+    border-radius:12px;
+    text-align: center;
+    background-color: #44aaff88;
+}
+label.label_total_despesas{
+    border: 1px solid white;
+    border-radius:12px;
+    text-align: center;
+    background-color: #ffaaaa;
+}
+label.label_saldo{
+    border: 2px solid white;
+    border-radius:12px;
+    font-weight: 600;
+    text-align: center;
+    background-color: #88ccaa;
+    margin: 2vh 0;
+}
+
+input{
+    display: inline-block;
+    width: 20vw;
+    min-width: 140px;
+    font-size: 1em;
+    text-align: right;
+    font-family: 'Lucida Sans', Arial, sans-serif;
+    font-weight: 500;
+    padding: 0.2vw 0.3vw;
+    border-radius: 12px;
+    border: 2px solid #00305088;
+    background-color: #ddddf2;
+    box-shadow: 2px 4px 4px;
+}
+input:hover,input:focus{
+    outline: none;
+    border: 2px solid #88ccaa;
+}
+
+@media (max-width: 900px){
+    div#container_geral_flex{
+        font-size: 0.95em;
+    }
+}
