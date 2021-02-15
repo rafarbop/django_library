@@ -1,1 +1,1 @@
-web:gunicorn pynilha/pynilha/django-teste.wsgi --log-file
+web: gunicorn pynilha.wsgi --pythonpath pynilha --log-file -
