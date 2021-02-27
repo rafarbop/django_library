@@ -1,13 +1,13 @@
 """views for app pynilha."""
-from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import get_list_or_404
-from django.template import loader
 import json
+
+from django.http import HttpResponseRedirect
+from django.shortcuts import render
+
+from .models import Aplicacoes, Despesas, Receitas
 
 # Create your views here.
 
-from .models import Receitas, Despesas, Aplicacoes
 
 # É possível trocar 'get' por 'get_object_or_404'
 # -> get_object_or_404(Receitas,mes_receitas='janeiro')
